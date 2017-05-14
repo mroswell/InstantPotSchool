@@ -10,6 +10,25 @@
 # endblock
 
 # block content
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default" v-for="(objective,i) in objectives">
+    <a class="panel-heading" style="display:flex">
+      <input type="checkbox" :id="'check'+(i+1)" />
+      <label :for="'check'+(i+1)">
+        <div><i class="fa fa-check"></i></div>
+      </label>
+      <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" :data-target="'#datatarget-'+(i+1)">
+        {[{objective.goal}]}
+      </h4>
+    </a>
+    <div :id="'datatarget-'+(i+1)" class="panel-collapse collapse" aria-expanded="false">
+      <div class="panel-body" v-html="objective.detail">
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3">
       <h2>Heading</h2>

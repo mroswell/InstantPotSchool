@@ -1,0 +1,23 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Order</th>
+      </tr>
+    </thead>
+    <tbody>
+      # for goal in goals
+        <tr>
+          <td>{{goal.name}}</td>
+          <td>{{goal.order}}</td>
+        </tr>
+      # endfor
+    </tbody>
+  </table>
+# endblock

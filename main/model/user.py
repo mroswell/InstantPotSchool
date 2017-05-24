@@ -9,7 +9,7 @@ from webargs.flaskparser import parser
 from webargs import fields as wf
 
 from api import fields
-from .goal import Goal
+# from .goal import Goal
 import model
 import util
 import config
@@ -27,7 +27,7 @@ class User(model.Base):
   verified = ndb.BooleanProperty(default=False)
   token = ndb.StringProperty(default='')
   password_hash = ndb.StringProperty(default='')
-  goals_completed = ndb.StructuredProperty(Goal, repeated=True)
+  # goals_completed = ndb.KeyProperty(Goal, repeated=True)
 
   def has_permission(self, perm):
     return self.admin or perm in self.permissions

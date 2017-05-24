@@ -4,18 +4,45 @@
   <div class="page-header">
     <h1>{{title}}</h1>
   </div>
+
+<div class="panel-group" id="accordion">
+  # for goal in goals
+  <div class="panel panel-default">
+    <a class="panel-heading" style="display:flex">
+      <input type="checkbox" id="check{{loop.index}}" />
+      <label for="check{{loop.index}}">
+        <div><i class="fa fa-check"></i></div>
+      </label>
+      <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" data-target="#datatarget-{{loop.index}}">
+        {{goal.name}}
+      </h4>
+    </a>
+    <div id="datatarget-{{loop.index}}" class="panel-collapse collapse" aria-expanded="false">
+      <div class="panel-body">
+        {{goal.detail}}
+      </div>
+    </div>
+  </div>
+  #endfor
+</div>
   <table class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>
+        <th>Detail</th>
         <th>Order</th>
+        <th>User Key</th>
+        <th>User Name</th>
       </tr>
     </thead>
     <tbody>
       # for goal in goals
         <tr>
           <td>{{goal.name}}</td>
+          <td>{{goal.detail}}</td>
           <td>{{goal.order}}</td>
+          <!--<td>{({goal.user_key}}</td>-->
+          <!--<td> {({user_db.username}}</td>-->
         </tr>
       # endfor
     </tbody>

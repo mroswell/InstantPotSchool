@@ -2,7 +2,7 @@
 
 new Vue({
   el: '#accordion',
-  delimiters: ['(((', ')))'],
+  delimiters: ['((', '))'],
   data: {
     objectives: [
       {

@@ -1,10 +1,7 @@
 import flask_wtf
 import wtforms
-import flask
-import auth
-import model
-from main import app
-import goal
+
+# import goal
 
 # create a form
 class GoalUpdateForm(flask_wtf.FlaskForm):
@@ -14,7 +11,13 @@ class GoalUpdateForm(flask_wtf.FlaskForm):
   detail = wtforms.TextAreaField('Detail', [wtforms.validators.optional()])
   order = wtforms.IntegerField('Order', [wtforms.validators.optional()])
 
+import flask
+import auth
+import model
+from main import app
+
 # create a route
+# view function
 @app.route('/goal/create/', methods=['GET', 'POST'])
 # @auth.login_required
 def goal_create():
@@ -22,7 +25,7 @@ def goal_create():
   # take data from form, and save it in the db
   if form.validate_on_submit():
     goal_db = model.Goal(
-        # user_key=auth.current_user_key(),
+        user_key=auth.current_user_key(),
         name=form.name.data,
         detail=form.detail.data,
         level=form.level.data,
